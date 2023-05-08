@@ -9,58 +9,55 @@
 #define inputNumber
 
 
-typedef struct p6q1 {
+/*typedef struct p6q1 {
     int numb;
-} numberStruct;
+} numberStruct;*/
 
 
 //This function takes the input number from the user
-int import() {
+int import(inputNumber int number) {
 
-    numberStruct number1;
+    //numberStruct number1;
 
-    printf("\nEnter a integer number here\n>");
-    scanf("%d" , &number1.numb);
-    return number1.numb;
+    printf("\nEnter a integer number here\n> ");
+    scanf("%d" , &number);
+    return number;
 }
 
 
 //This function calculates the Collatz conjecture
-void collatzConjenture() {
+void collatzConjenture(inputNumber int number) {
 
-    numberStruct number1;
+    //numberStruct number1;
 
-    if (number1.numb != 1) {
-        if ((number1.numb % 2) == 0) {
-            number1.numb = number1.numb / 2;
-            printf("%d\n" , number1.numb);
-            collatzConjenture();
+    if (number != 1) {
+        if ((number % 2) == 0) {
+            number = number / 2;
+            printf("%d\n" , number);
+            collatzConjenture(number);
         }
         else {
-            number1.numb = (3 * number1.numb) + 1;
-            printf("%d\n" , number1.numb);
-            collatzConjenture();
+            number = (3 * number) + 1;
+            printf("%d\n" , number);
+            collatzConjenture(number);
 
         }
-    }
-    else {
-        printf("1\n");
     }
 }
 
 
 //This function checks that the entered number is only an integer > 0 so that there is no problem in calculaions.
-void check(int inputNumber) {
+void check(inputNumber int number) {
 
-    numberStruct number1;
+    //numberStruct number1;
 
-    number1.numb = (int)number1.numb;
-    if (number1.numb > 0) {
-        collatzConjenture();
+    number = (int)number;
+    if (number > 0) {
+        collatzConjenture(number);
     }
     else {
         printf("Invalid input. Please enter a positive integer.");
-        import();
+        import(number);
     }
     
 }
@@ -68,6 +65,8 @@ void check(int inputNumber) {
 
 int main() {
 
-    check(import());
+    int number;
+    
+    check(import(number));
     return 0;
 }
