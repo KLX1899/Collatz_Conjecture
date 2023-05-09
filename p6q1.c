@@ -12,15 +12,6 @@ typedef struct p6q1 {
 } structNumber;
 
 
-//This function takes the input number from the user
-int import(structNumber input) {
-
-    printf("\nEnter a integer number here\n> ");
-    scanf("%d" , &input.number);
-    return input.number;
-}
-
-
 //This function calculates the Collatz conjecture
 void collatzConjenture(structNumber input) {
 
@@ -49,7 +40,6 @@ void check(structNumber input) {
     }
     else {
         printf("Invalid input. Please enter a positive integer.\n");
-        import(input);
     }
     
 }
@@ -59,6 +49,8 @@ int main() {
     
     structNumber input;    
     
-    check(import(input));
+    printf("\nEnter a integer number here\n> ");
+    scanf("%d" , &input.number);
+    check(input);
     return 0;
 }
