@@ -6,40 +6,34 @@
 
 #include <stdio.h>
 
-#define inputNumber
 
-
-/*typedef struct p6q1 {
-    int numb;
-} numberStruct;*/
+typedef struct p6q1 {
+    int number;
+} structNumber;
 
 
 //This function takes the input number from the user
-int import(inputNumber int number) {
-
-    //numberStruct number1;
+int import(structNumber input) {
 
     printf("\nEnter a integer number here\n> ");
-    scanf("%d" , &number);
-    return number;
+    scanf("%d" , &input.number);
+    return input.number;
 }
 
 
 //This function calculates the Collatz conjecture
-void collatzConjenture(inputNumber int number) {
+void collatzConjenture(structNumber input) {
 
-    //numberStruct number1;
-
-    if (number != 1) {
-        if ((number % 2) == 0) {
-            number = number / 2;
-            printf("%d\n" , number);
-            collatzConjenture(number);
+    if (input.number != 1) {
+        if ((input.number % 2) == 0) {
+            input.number = input.number / 2;
+            printf("%d\n" , input.number);
+            collatzConjenture(input);
         }
         else {
-            number = (3 * number) + 1;
-            printf("%d\n" , number);
-            collatzConjenture(number);
+            input.number = (3 * input.number) + 1;
+            printf("%d\n" , input.number);
+            collatzConjenture(input);
 
         }
     }
@@ -47,26 +41,24 @@ void collatzConjenture(inputNumber int number) {
 
 
 //This function checks that the entered number is only an integer > 0 so that there is no problem in calculaions.
-void check(inputNumber int number) {
+void check(structNumber input) {
 
-    //numberStruct number1;
-
-    number = (int)number;
-    if (number > 0) {
-        collatzConjenture(number);
+    input.number = (int)input.number;
+    if (input.number > 0) {
+        collatzConjenture(input);
     }
     else {
-        printf("Invalid input. Please enter a positive integer.");
-        import(number);
+        printf("Invalid input. Please enter a positive integer.\n");
+        import(input);
     }
     
 }
 
 
 int main() {
-
-    int number;
     
-    check(import(number));
+    structNumber input;    
+    
+    check(import(input));
     return 0;
 }
